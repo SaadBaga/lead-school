@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js --exec babel-node",
+    "start": "babel-node app.js",
     "server": "babel-node app.js"
   },
   "keywords": [],
