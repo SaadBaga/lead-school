@@ -15,19 +15,18 @@ import rateLimit from 'express-rate-limit'
 import MongoStore from 'rate-limit-mongo'
 import passport from 'passport'
 
-
 const app = express()
 const router = express.Router()
 // compress all responses
 app.use(compression())
 app.use(cors())
 
-const mongo_config = config[process.env.ENV || 'development'].mongo
-const mongo_url = 'mongodb+srv://' + mongo_config.user + ':' + mongo_config.password + '@' + mongo_config.url + '/' + mongo_config.database
+const mongoConfig = config[process.env.ENV || 'development'].mongo
+const mongoUrl = 'mongodb+srv://' + mongoConfig.user + ':' + mongoConfig.password + '@' + mongoConfig.url + '/' + mongoConfig.database
 
 const limiter = rateLimit({
   store: new MongoStore({
-    uri: mongo_url
+    uri: mongoUrl
     // see Configuration
   }),
   windowMs: 15 * 60 * 1000, // 15 minutes
@@ -66,7 +65,6 @@ app.use(function (req, res, next) {
 // will print stacktrace
 if (app.get('env') === 'development') {
   app.use(function (err, req, res, next) {
-    console.log('-----', err)
     res.status(err.status || 500)
     res.render('error', {
       message: err.message,
@@ -78,7 +76,6 @@ if (app.get('env') === 'development') {
 // production error handler
 // no stacktraces leaked to user
 app.use(function (err, req, res, next) {
-  console.log('-----', err)
   res.status(err.status || 500)
   res.render('error', {
     message: err.message,
@@ -86,7 +83,7 @@ app.use(function (err, req, res, next) {
   })
 })
 
-mongodb.connect(mongo_url, function (err) {
+mongodb.connect(mongoUrl, function (err) {
   if (err) {
     console.log('Unable to connect to Mongo.', err)
   } else {

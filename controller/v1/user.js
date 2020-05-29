@@ -3,10 +3,8 @@ import bcrypt from 'bcrypt-nodejs'
 import constant from '../../config/constant'
 import _ from 'lodash'
 import jwt from 'jsonwebtoken'
-const { ObjectId } = require('mongodb')
 const Cryptr = require('cryptr')
 const cryptr = new Cryptr(constant.apiTokenSecret)
-
 
 export const apiCheckUserLogin = async (req, res) => {
   req.body.email ? req.body.email = _.trim(req.body.email.toLowerCase()) : ''
