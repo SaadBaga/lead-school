@@ -5,8 +5,7 @@ const config = {
         password: process.env.MONGOPWD,
         database: "test",
         url: process.env.MONGOURL
-    },
-    
+    }
   }
 }
 export default config

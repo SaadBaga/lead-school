@@ -33,6 +33,7 @@
     "mongodb": "^3.1.10",
     "morgan": "^1.9.1",
     "morgan-body": "^2.4.5",
+    "nodemon": "^2.0.4",
     "passport": "^0.4.1",
     "pug": "^2.0.3",
     "rate-limit-mongo": "^1.0.3",
