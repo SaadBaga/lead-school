@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "babel-node app.js",
+    "start": "node app.js --exec babel-node",
     "server": "babel-node app.js"
   },
   "keywords": [],

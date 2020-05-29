@@ -87,10 +87,8 @@ mongodb.connect(mongoUrl, function (err) {
   if (err) {
     console.log('Unable to connect to Mongo.', err)
   } else {
-    app.listen(8000, function () {
-      console.log('MongoDB Connected')
-      console.log('API server listening on port 8000!')
-      console.log('API server started in ' + process.env.ENV)
+    app.listen(process.env.port, function () {
+     
     })
   }
 })
